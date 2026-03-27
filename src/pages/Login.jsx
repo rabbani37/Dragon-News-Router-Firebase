@@ -17,7 +17,7 @@ const Login = () => {
                 const user = userCredential.user;
                 setUser(user)
                 console.log("USER LOGINED")
-               navigate('/')
+              
             })
             .catch((error) => {
                 const errorMessage = error.message;
