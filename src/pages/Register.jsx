@@ -1,10 +1,7 @@
-import { field } from 'firebase/firestore/pipelines';
-import React from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
-
-
-
+import { AuthContext } from '../ContextAPI/CreateContext';
 
 
 
@@ -12,11 +9,27 @@ import { Link } from 'react-router';
 
 const Register = () => {
 
+    const { setUser, createUser } = useContext(AuthContext)
 
-    const { handleSubmit, register, } = useForm()
+
+    const { handleSubmit, register, } = useForm();
 
     const handleRegister = (data) => {
-        console.log(data)
+        const email = data.email
+        const password = data.password;
+        if(!data.tarms){
+            return alert("please accept the terms and condition")
+        }
+        // create user 
+        createUser(email, password)
+            .then(result => {
+                setUser(result.user)
+            })
+            .catch(errors => {
+                // const errorCode = errors.code;
+                const errorMessage = errors.message;
+                console.log(errorMessage)
+            })
     }
 
 
@@ -53,8 +66,8 @@ const Register = () => {
 
                         <div className='mt-4 flex gap-2 '>
                             <input
-                                {...register("tarms",{})}
-                                type="checkbox"  />
+                                {...register("tarms", {})}
+                                type="checkbox" />
                             <a className="">Accept Term & Conditions</a></div>
                         <button type='submit' className="btn btn-neutral mt-4">Register</button>
                     </form>
