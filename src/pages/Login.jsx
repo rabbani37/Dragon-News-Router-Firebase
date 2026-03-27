@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../ContextAPI/CreateContext';
 
 const Login = () => {
+
+    const { user } = useContext(AuthContext)
+    console.log(user)
     return (
         <div className='flex justify-center min-h-screen items-center '>
             <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl rounded p-10">
@@ -11,7 +15,7 @@ const Login = () => {
                 <hr className='my-10 text-gray-300' />
                 <div className="card-body p-3">
                     <form className="fieldset">
-                       
+
                         <label className=" label">Email</label>
                         <input type="email" className="input w-full bg-gray-100" placeholder="enter your emai address" />
 
