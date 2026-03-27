@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../ContextAPI/CreateContext';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
 
     const { logInUser, setUser } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const { handleSubmit, register } = useForm()
 
@@ -16,6 +17,7 @@ const Login = () => {
                 const user = userCredential.user;
                 setUser(user)
                 console.log("USER LOGINED")
+               navigate('/')
             })
             .catch((error) => {
                 const errorMessage = error.message;

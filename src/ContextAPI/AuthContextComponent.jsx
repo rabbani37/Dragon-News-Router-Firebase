@@ -21,7 +21,7 @@ const AuthContextComponent = ({ children }) => {
         return signOut(auth)
     }
 
-    console.log(user)
+    // console.log(user)
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser => {
             setUser(currentUser)
