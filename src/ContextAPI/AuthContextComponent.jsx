@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AuthContext } from "./CreateContext";
 import app from "../Firebase/firebase.confog";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import Loading from "../components/Loading";
 
 
 
@@ -10,22 +11,27 @@ const auth = getAuth(app)
 const AuthContextComponent = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [loading2, setLoading2] = useState(true)
 
     const createUser = (email, password) => {
+        setLoading(true)
+        setLoading2(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const logInUser = (email, password) => {
+        setLoading(true)
+        setLoading2(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
     const logOut = () => {
         return signOut(auth)
     }
 
-    // console.log(user)
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser => {
             setUser(currentUser)
             setLoading(false)
+            setLoading2(false)
         }));
         return () => { unSubscribe() }
     }, [])
@@ -37,7 +43,9 @@ const AuthContextComponent = ({ children }) => {
         logInUser,
         logOut,
         loading,
-        setLoading
+        setLoading,
+        loading2,
+        setLoading2
     }
 
     return (

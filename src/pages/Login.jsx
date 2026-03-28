@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../ContextAPI/CreateContext';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
 
-    const { logInUser, setUser } = useContext(AuthContext);
-    const navigate = useNavigate()
+    const { logInUser, } = useContext(AuthContext);
+    const loaction = useLocation();
+    const navigate = useNavigate();
+
+    console.log(loaction)
+
 
     const { handleSubmit, register } = useForm()
 
@@ -15,9 +19,13 @@ const Login = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                setUser(user)
-                console.log("USER LOGINED")
-              
+                if (loaction.state && user) {
+                    navigate(loaction.state)
+                }
+                else {
+                    navigate('/')
+                }
+
             })
             .catch((error) => {
                 const errorMessage = error.message;
