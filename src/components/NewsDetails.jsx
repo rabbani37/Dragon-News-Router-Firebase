@@ -9,7 +9,7 @@ const NewsDetails = () => {
     const news = newses.find(n => n.id === Id);
 
     const { category_id, title, image_url, details, } = news;
-    console.log(news)
+    // console.log(news)
 
     return (
         <div>

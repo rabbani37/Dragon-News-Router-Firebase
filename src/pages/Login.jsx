@@ -9,7 +9,7 @@ const Login = () => {
     const loaction = useLocation();
     const navigate = useNavigate();
 
-    console.log(loaction)
+    // console.log(loaction)
 
 
     const { handleSubmit, register } = useForm()

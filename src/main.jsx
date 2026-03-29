@@ -5,11 +5,14 @@ import App from "./App.jsx";
 import { RouterProvider } from "react-router";
 import router from "./routes/router.jsx";
 import AuthContextComponent from "./ContextAPI/AuthContextComponent.jsx";
+import NewsContextComponent from "./ContextAPI/NewsContextComponent.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthContextComponent>
-      <RouterProvider router={router}></RouterProvider>
-    </AuthContextComponent>
+    <NewsContextComponent>
+      <AuthContextComponent>
+        <RouterProvider router={router}></RouterProvider>
+      </AuthContextComponent>
+    </NewsContextComponent>
   </StrictMode>
 );

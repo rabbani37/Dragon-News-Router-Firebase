@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../ContextAPI/CreateContext';
 
 
@@ -9,21 +9,28 @@ import { AuthContext } from '../ContextAPI/CreateContext';
 
 const Register = () => {
 
-    const { setUser, createUser } = useContext(AuthContext)
-
+    const { setUser, createUser, updateUser } = useContext(AuthContext)
+    const navigate = useNavigate();
 
     const { handleSubmit, register, } = useForm();
 
     const handleRegister = (data) => {
         const email = data.email
         const password = data.password;
-        if(!data.tarms){
+        if (!data.tarms) {
             return alert("please accept the terms and condition")
         }
         // create user 
         createUser(email, password)
             .then(result => {
                 setUser(result.user)
+                updateUser({
+                    displayName: data.name,
+                    photoURL: data.photo
+                },
+                    navigate('/')
+
+                )
             })
             .catch(errors => {
                 // const errorCode = errors.code;

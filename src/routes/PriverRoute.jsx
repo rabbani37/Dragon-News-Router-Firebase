@@ -19,7 +19,7 @@ const PriverRoute = ({ children }) => {
         // return <Loading2></Loading2>
     }
 
-    console.log(location)
+    // console.log(location)
     if (!user) {
         return <Navigate state={location.pathname} to={"/auth/login"}></Navigate>
     }
