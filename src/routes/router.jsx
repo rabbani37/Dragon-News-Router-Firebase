@@ -9,6 +9,7 @@ import NewsDetails from "../components/NewsDetails";
 import PriverRoute from "./PriverRoute";
 import Loading from "../components/Loading";
 import Loading2 from "../components/Loading2";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/*",
-    element: <h2>Error404</h2>,
+    Component: ErrorPage ,
   },
 ]);
 
