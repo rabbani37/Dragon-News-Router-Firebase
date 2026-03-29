@@ -1,9 +1,8 @@
-import { Link, useNavigate } from "react-router";
+import { Link, } from "react-router";
 
 
 const ErrorPage = () => {
 
-    const navigate = useNavigate();
 
     return (
         <div>
@@ -19,7 +18,7 @@ const ErrorPage = () => {
                 </p>
 
                 <Link
-                    to={navigate('/')}
+                    to={'/'}
                     className="mt-6 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
                 >
                     Go Back

@@ -3,7 +3,7 @@
 
 const LetestTitles = ({ news }) => {
 
-    console.log(news)
+    // console.log(news)
 
     return (
         <div>

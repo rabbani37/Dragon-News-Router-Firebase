@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AuthContext } from "./CreateContext";
 import app from "../Firebase/firebase.confog";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import Loading from "../components/Loading";
 
 
@@ -29,6 +29,9 @@ const AuthContextComponent = ({ children }) => {
     const logOut = () => {
         return signOut(auth)
     }
+    const forgatePassword =(email)=>{
+        return sendPasswordResetEmail(auth,email);
+    }
 
 
 
@@ -53,7 +56,8 @@ const AuthContextComponent = ({ children }) => {
         setLoading,
         loading2,
         setLoading2,
-        updateUser
+        updateUser,
+        forgatePassword
     }
 
     return (

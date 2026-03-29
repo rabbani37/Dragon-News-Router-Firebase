@@ -1,20 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../ContextAPI/CreateContext';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
 
-    const { logInUser, } = useContext(AuthContext);
+    const { logInUser, forgatePassword } = useContext(AuthContext);
     const loaction = useLocation();
     const navigate = useNavigate();
+    const emailRef = useRef();
 
-    // console.log(loaction)
 
-
-    const { handleSubmit, register } = useForm()
+    const { handleSubmit, register, getValues } = useForm()
 
     const handleLogin = (data) => {
+        console.log(data)
         logInUser(data.email, data.password)
             .then((userCredential) => {
                 // Signed in 
@@ -33,6 +33,25 @@ const Login = () => {
             });
     }
 
+
+
+    const handleForgatePassword = () => {
+        const email = getValues("email")
+        if (!email) {
+            alert("Please provide valid email.")
+        }
+        forgatePassword(email)
+            .then(() => {
+                alert('Password reset email sent!')
+                // ..
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                alert(`${errorMessage}`)
+                // ..
+            });
+    }
+
     return (
         <div className='flex justify-center min-h-screen items-center '>
             <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl rounded p-10">
@@ -44,7 +63,7 @@ const Login = () => {
                     <form onSubmit={handleSubmit(handleLogin)} className="fieldset">
 
                         <label className=" label">Email</label>
-                        <input
+                        <input ref={emailRef}
                             {...register("email", { required: true })}
                             type="email" className="input w-full bg-gray-100" placeholder="enter your emai address" />
 
@@ -53,7 +72,7 @@ const Login = () => {
                             {...register("password", { required: true })}
                             type="password" className="input w-full bg-gray-100" placeholder="enter your password" />
 
-                        <div><a className="link link-hover">Forgot password?</a></div>
+                        <div><button onClick={handleForgatePassword} type='button' className="link link-hover">Forgot password?</button></div>
                         <button type='submit' className="btn btn-neutral mt-4">Login</button>
                     </form>
                 </div>

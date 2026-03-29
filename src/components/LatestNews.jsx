@@ -11,7 +11,7 @@ const LatestNews = () => {
 
   const { newses } = useContext(NewsContext);
 
-  console.log(newses)
+  // console.log(newses)
 
 
 
