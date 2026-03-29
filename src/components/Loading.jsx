@@ -1,19 +1,17 @@
 import React from 'react';
-import { CircularProgress } from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
 
 const Loading = () => {
     return (
         <div className='min-h-screen flex justify-center items-center '>
-            <CircularProgress
-                height="100"
-                width="100"
-                color="#4fa94d"
-                ariaLabel="circular-progress-loading"
-                wrapperStyle={{}}
-                wrapperClass="wrapper-class"
+            <Oval
                 visible={true}
-                strokeWidth={2}
-                animationDuration={1}
+                height="80"
+                width="80"
+                color="#4fa94d"
+                ariaLabel="oval-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
             />
         </div>
     );

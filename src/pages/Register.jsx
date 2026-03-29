@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext,  } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../ContextAPI/CreateContext';
@@ -9,7 +9,8 @@ import { AuthContext } from '../ContextAPI/CreateContext';
 
 const Register = () => {
 
-    const { setUser, createUser, updateUser } = useContext(AuthContext)
+
+    const { setUser, createUser, updateUser,  } = useContext(AuthContext)
     const navigate = useNavigate();
 
     const { handleSubmit, register, } = useForm();
@@ -40,6 +41,9 @@ const Register = () => {
     }
 
 
+
+    
+
     return (
         <div className='flex justify-center  items-center '>
             <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl rounded p-10">
@@ -47,6 +51,25 @@ const Register = () => {
                     <h2 className='text-3xl text-center font-bold'>Register an account</h2>
                 </div>
                 <hr className='my-8 text-gray-300' />
+                {/* <div >
+                    <label className="input validator">
+
+                        <input onChange={(e) => setPhoneNum(e.target.value)}
+                            type="number"
+                            className="tabular-nums"
+                            required
+                            placeholder="Phone"
+                            pattern="[0-9]*"
+                            minLength="11"
+                            maxLength="11"
+                            title="Must be 11 digits"
+                        />
+
+                    </label>
+                    <p className="validator-hint">Must be 11 digits</p>
+                </div>
+                <button onClick={handlePhoneUnmber}>Sent</button> */}
+              
                 <div className="card-body p-3">
                     <form onSubmit={handleSubmit(handleRegister)} className="fieldset">
                         <label className="label">Name</label>

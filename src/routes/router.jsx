@@ -8,7 +8,7 @@ import Register from "../pages/Register";
 import NewsDetails from "../components/NewsDetails";
 import PriverRoute from "./PriverRoute";
 import Loading from "../components/Loading";
-import Loading2 from "../components/Loading2";
+
 import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         path: "/category/:id",
         element: <CategoryNews></CategoryNews>,
         loader: () => fetch("/news.json"),
-        hydrateFallbackElement: <Loading2></Loading2>
+        hydrateFallbackElement: <span className="loading loading-spinner loading-xl"></span>
       }
     ],
   },
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
     path: "/news-details/:Id",
     element: <PriverRoute><NewsDetails /></PriverRoute>,
     loader: () => fetch("/news.json"),
-    hydrateFallbackElement: <Loading></Loading>
+    hydrateFallbackElement: <span className="loading loading-spinner loading-xl"></span>
   },
   {
     path: "/*",

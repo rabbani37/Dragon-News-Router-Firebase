@@ -6,21 +6,21 @@ import { useEffect, useState } from "react";
 const NewsContextComponent = ({ children }) => {
 
     const [newses, setNewses] = useState([]);
-    const [loadingTime, setLoadingTime] = useState(true);
 
 
     const newsDataLoad = async () => {
         const res = await axios.get("/news.json");
         setNewses(res.data)
     };
+
     useEffect(() => {
         newsDataLoad();
-        setLoadingTime(false)
+        
     }, [])
 
     const newsINFO = {
         newses,
-        loadingTime
+       
     };
 
     return (

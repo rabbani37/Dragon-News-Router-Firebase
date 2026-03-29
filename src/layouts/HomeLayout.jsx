@@ -5,7 +5,7 @@ import LatestNews from "../components/LatestNews";
 import Navbar from "../components/Navbar";
 import LeftAside from "../components/homelayout/LeftAside";
 import RighAside from "../components/homelayout/RighAside";
-import Loading2 from "../components/Loading2";
+import Loading from "../components/Loading";
 
 const HomeLayout = () => {
 
@@ -27,7 +27,7 @@ const HomeLayout = () => {
           <LeftAside></LeftAside>
         </aside>
         <section className="main col-span-6">
-          {state === "loading" ? <Loading2></Loading2> : <Outlet></Outlet>}
+          {state === "loading" ? <Loading></Loading> : <Outlet></Outlet>}
         </section>
         <aside className="col-span-3 sticky top-0 h-fit ">
           <RighAside></RighAside>
